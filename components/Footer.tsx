@@ -13,20 +13,22 @@ const legalLinks = [
 { href: '/admin', label: 'لوحة التحكم' }
 ];
 
+const headingStyle = { fontWeight: 700, marginBottom: '12px', fontSize: '15px', color: '#d9a441', letterSpacing: '0.3px' };
+
 export default function Footer() {
 return h(
 'footer',
-{ style: { backgroundColor: '#0f2a3a', color: '#f6efe3', marginTop: '48px' } },
+{ style: { backgroundColor: '#0f2a3a', color: '#f6efe3', marginTop: '48px', borderTop: '3px solid #d9a441' } },
 h(
 'div',
-{ className: 'container-p', style: { paddingTop: '36px', paddingBottom: '24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '28px' } },
+{ className: 'container-p', style: { paddingTop: '40px', paddingBottom: '24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '28px' } },
 h(
 'div',
 {},
 h(
 'div',
 { style: { display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' } },
-h('img', { src: 'https://hbstravel.ge/logo.png', alt: 'HBS Travel', style: { height: '30px', width: '30px', objectFit: 'contain' } }),
+h('img', { src: 'https://hbstravel.ge/logo.png', alt: 'HBS Travel', style: { height: '30px', width: '30px', objectFit: 'contain', borderRadius: '6px' } }),
 h('span', { style: { fontWeight: 800, fontSize: '20px' } }, 'HBS Travel')
 ),
 h('p', { style: { fontSize: '14px', lineHeight: 1.9, opacity: 0.85 } }, 'شريككم الموثوق لتنظيم رحلات جورجيا للعائلات والأفراد من دول الخليج، بخبرة محلية ومرشدين يتحدثون العربية.'),
@@ -36,17 +38,17 @@ h('p', { style: { fontSize: '13px', opacity: 0.75 } }, 'المكتب الرئي�
 h(
 'div',
 {},
-h('div', { style: { fontWeight: 700, marginBottom: '10px' } }, 'روابط مهمة'),
+h('div', { style: headingStyle }, 'روابط مهمة'),
 h(
 'ul',
 { style: { listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' } },
-legalLinks.map((l) => h('li', { key: l.href }, h(Link, { href: l.href, style: { color: '#f6efe3', textDecoration: 'none', fontSize: '14px', opacity: 0.85 } }, l.label)))
+legalLinks.map((l) => h('li', { key: l.href }, h(Link, { href: l.href, className: 'nav-link', style: { color: '#f6efe3', textDecoration: 'none', fontSize: '14px', opacity: 0.85 } }, l.label)))
 )
 ),
 h(
 'div',
 {},
-h('div', { style: { fontWeight: 700, marginBottom: '10px' } }, 'موقع المكتب'),
+h('div', { style: headingStyle }, 'موقع المكتب'),
 h(
 'div',
 { className: 'gallery-placeholder', style: { height: '140px', borderRadius: '12px', fontSize: '13px' } },
@@ -57,7 +59,7 @@ h('p', { style: { fontSize: '13px', opacity: 0.75, marginTop: '10px' } }, 'يم�
 h(
 'div',
 {},
-h('div', { style: { fontWeight: 700, marginBottom: '10px' } }, 'تواصل معنا'),
+h('div', { style: headingStyle }, 'تواصل معنا'),
 h('p', { style: { fontSize: '14px', opacity: 0.85 } }, 'واتساب: 995555165926+'),
 h('p', { style: { fontSize: '14px', opacity: 0.85 } }, 'البريد: info@hbstravel.ge'),
 h('p', { style: { fontSize: '13px', opacity: 0.7, marginTop: '10px' } }, 'مواطنو دول الخليج يدخلون جورجيا بدون تأشيرة مسبقة.')
