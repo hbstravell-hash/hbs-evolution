@@ -13,6 +13,12 @@ const legalLinks = [
 { href: '/admin', label: 'لوحة التحكم' }
 ];
 
+const paymentBadges = [
+{ label: '💳 PayPal', bg: '#ffc439', color: '#003087' },
+{ label: '💳 Visa / Mastercard', bg: '#f6efe3', color: '#0f2a3a' },
+{ label: '🪙 Crypto (BTC, ETH, USDT)', bg: 'rgba(217,164,65,0.18)', color: '#d9a441' }
+];
+
 const headingStyle = { fontWeight: 700, marginBottom: '12px', fontSize: '15px', color: '#d9a441', letterSpacing: '0.3px' };
 
 export default function Footer() {
@@ -63,6 +69,23 @@ h('div', { style: headingStyle }, 'تواصل معنا'),
 h('p', { style: { fontSize: '14px', opacity: 0.85 } }, 'واتساب: 995555165926+'),
 h('p', { style: { fontSize: '14px', opacity: 0.85 } }, 'البريد: info@hbstravel.ge'),
 h('p', { style: { fontSize: '13px', opacity: 0.7, marginTop: '10px' } }, 'مواطنو دول الخليج يدخلون جورجيا بدون تأشيرة مسبقة.')
+),
+h(
+'div',
+{},
+h('div', { style: headingStyle }, 'طرق الدفع المتاحة'),
+h(
+'div',
+{ style: { display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '10px' } },
+paymentBadges.map((b) =>
+h(
+'span',
+{ key: b.label, className: 'badge-pill', style: { backgroundColor: b.bg, color: b.color, fontSize: '12px', fontWeight: 700 } },
+b.label
+)
+)
+),
+h('p', { style: { fontSize: '12px', opacity: 0.7 } }, 'الدفع الإلكتروني الآمن متاح عبر شريكنا PayPal بنفس نظام الدفع المعتمد في hbstravel.ge، إضافة إلى الدفع نقداً أو بالبطاقة عند الوصول.')
 )
 ),
 h(
