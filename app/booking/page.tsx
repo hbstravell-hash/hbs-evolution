@@ -52,7 +52,19 @@ const message = encodeURIComponent(lines.join('\n'));
 window.open('https://wa.me/995555165926?text=' + message, '_blank');
 };
 
+const handlePaymentClick = (method: string) => {
+const lines = [
+'مرحباً، أرغب بدفع العربون عبر ' + method + ' لحجز:',
+'الباقة: ' + (pkg ? pkg.title : 'غير محددة'),
+'الإجمالي التقديري: ' + total + ' $',
+'العربون المطلوب: ' + depositAmount + ' $'
+];
+const message = encodeURIComponent(lines.join('\n'));
+window.open('https://wa.me/995555165926?text=' + message, '_blank');
+};
+
 const boxStyle = { padding: '10px 12px', borderRadius: '8px', border: '1px solid #ddd', fontSize: '14px', width: '100%' };
+const payBtnBase = { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', width: '100%', border: 'none', borderRadius: '10px', padding: '12px 16px', fontSize: '14px', fontWeight: 700, cursor: 'pointer', marginBottom: '10px' };
 
 return h(
 'div',
@@ -144,7 +156,25 @@ addonsTotal > 0 ? h('p', { style: { fontSize: '13px', opacity: 0.75, marginBotto
 h('hr', { style: { margin: '12px 0', border: 'none', borderTop: '1px solid #eee' } }),
 h('p', { style: { fontWeight: 800, fontSize: '20px', color: '#b8862b', marginBottom: '6px' } }, 'الإجمالي: ' + total + ' $'),
 h('p', { style: { fontSize: '13px', opacity: 0.8, marginBottom: '18px' } }, 'العربون المطلوب الآن: ' + depositAmount + ' $'),
-h('button', { onClick: handleConfirm, className: 'btn-primary', style: { width: '100%', border: 'none', fontSize: '15px' } }, 'تأكيد الحجز عبر واتساب')
+h('button', { onClick: handleConfirm, className: 'btn-primary', style: { width: '100%', border: 'none', fontSize: '15px', marginBottom: '18px' } }, 'تأكيد الحجز عبر واتساب'),
+h('hr', { style: { margin: '4px 0 16px', border: 'none', borderTop: '1px solid #eee' } }),
+h('p', { style: { fontSize: '13px', fontWeight: 700, marginBottom: '10px' } }, 'طرق الدفع الآمنة المتاحة'),
+h(
+'button',
+{ onClick: () => handlePaymentClick('PayPal'), style: { ...payBtnBase, backgroundColor: '#ffc439', color: '#003087' } },
+'💳 الدفع عبر PayPal'
+),
+h(
+'button',
+{ onClick: () => handlePaymentClick('بطاقة ائتمانية/خصم'), style: { ...payBtnBase, backgroundColor: '#1f2b3a', color: '#fff' } },
+'💳 بطاقة ائتمان / خصم (عبر PayPal)'
+),
+h(
+'button',
+{ onClick: () => handlePaymentClick('عملات مشفرة (BTC, ETH, USDT)'), style: { ...payBtnBase, backgroundColor: '#1f2b3a', color: '#fff', marginBottom: 0 } },
+'🪙 الدفع بالعملات المشفرة (BTC, ETH, USDT)'
+),
+h('p', { style: { fontSize: '11px', opacity: 0.65, marginTop: '10px', textAlign: 'center' } }, 'يتم تفعيل الدفع الإلكتروني عبر شريكنا المرخّص PayPal بنفس نظام الدفع المعتمد في hbstravel.ge — سيتم تزويدك برابط دفع مباشر وآمن عبر واتساب.')
 )
 );
 }
@@ -156,4 +186,4 @@ return h(
 h('h1', { style: { fontSize: '28px', fontWeight: 800, marginBottom: '18px' } }, 'محرك الحجز'),
 h(Suspense, { fallback: h('p', {}, 'جارِ التحميل...') }, h(BookingForm, {}))
 );
-  }
+}
