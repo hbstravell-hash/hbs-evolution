@@ -26,6 +26,8 @@ if (!pkg) return notFound();
 const pkgHotels = hotels.filter((hh) => pkg.hotels.includes(hh.slug));
 const whatsappMsg = encodeURIComponent('مرحباً، أرغب بالاستفسار عن باقة: ' + pkg.title);
 const whatsappHref = 'https://wa.me/995555165926?text=' + whatsappMsg;
+const payHref = (method: string) => 'https://wa.me/995555165926?text=' + encodeURIComponent('مرحباً، أرغب بدفع العربون عبر ' + method + ' لباقة: ' + pkg.title);
+const payPillStyle = { display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '8px 14px', borderRadius: '9999px', fontSize: '13px', fontWeight: 700, textDecoration: 'none' };
 
 return h(
 'div',
@@ -41,9 +43,17 @@ h('img', { key: n, src: src, alt: pkg.title + ' - صورة ' + (n + 1), style: {
 ),
 h(
 'div',
-{ style: { display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '28px' } },
+{ style: { display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '14px' } },
 h(Link, { href: '/booking?package=' + pkg.slug, className: 'btn-primary' }, 'احجز الآن'),
 h('a', { href: whatsappHref, target: '_blank', rel: 'noopener noreferrer', className: 'btn-whatsapp' }, 'استفسار عبر واتساب')
+),
+h(
+'div',
+{ style: { display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '28px' } },
+h('span', { style: { fontSize: '13px', fontWeight: 700, opacity: 0.7 } }, 'الدفع الآمن:'),
+h('a', { href: payHref('PayPal'), target: '_blank', rel: 'noopener noreferrer', style: { ...payPillStyle, backgroundColor: '#ffc439', color: '#003087' } }, '💳 PayPal'),
+h('a', { href: payHref('بطاقة ائتمانية/خصم عبر PayPal'), target: '_blank', rel: 'noopener noreferrer', style: { ...payPillStyle, backgroundColor: '#0f2a3a', color: '#fff' } }, '💳 بطاقة ائتمان'),
+h('a', { href: payHref('عملات مشفرة (BTC, ETH, USDT)'), target: '_blank', rel: 'noopener noreferrer', style: { ...payPillStyle, backgroundColor: 'rgba(217,164,65,0.18)', color: '#b8862b' } }, '🪙 كريبتو')
 ),
 h(
 'section',
