@@ -4,12 +4,6 @@ import { packages, destinations, activities } from '../lib/data';
 
 const h = React.createElement;
 
-const testimonials = [
-{ name: 'أبو فهد', city: 'الرياض', text: 'تنظيم ممتاز من الاستقبال حتى المغادرة، والمرشد العربي سهّل علينا كل شيء مع الأطفال.' },
-{ name: 'أم سارة', city: 'دبي', text: 'الفنادق كانت مناسبة تماماً للعائلة والمطاعم الحلال متوفرة في كل مدينة زرناها.' },
-{ name: 'خالد العتيبي', city: 'الكويت', text: 'رحلة سفانيتي كانت تجربة لا تُنسى، وسعر واضح بدون أي مفاجآت عند الوصول.' }
-];
-
 const trustPoints = [
 'مرشدون يتحدثون العربية بطلاقة',
 'مطاعم حلال في جميع البرامج',
@@ -132,28 +126,29 @@ h(Link, { href: '/activities', style: { display: 'inline-block', marginTop: '18p
 ),
 h(
 'section',
-{ className: 'container-p', style: { padding: '20px' } },
+{ className: 'container-p', style: { padding: '20px 20px 48px' } },
 h('h2', { className: 'section-title' }, 'آراء عملائنا'),
-h('p', { className: 'section-sub' }, 'تجارب حقيقية من عملائنا في رحلاتهم إلى جورجيا.'),
+h('p', { className: 'section-sub' }, 'نعمل حالياً على جمع تقييمات حقيقية من عملائنا، وستُنشر هنا فور توفرها.'),
 h(
 'div',
-{ style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '18px', marginTop: '16px' } },
-testimonials.map((t) =>
+{
+className: 'card',
+style: {
+padding: '46px 24px',
+textAlign: 'center',
+border: '2px dashed rgba(184,134,43,0.4)',
+backgroundColor: 'rgba(217,164,65,0.06)',
+boxShadow: 'none',
+marginTop: '16px'
+}
+},
+h('div', { style: { fontSize: '32px', marginBottom: '10px' } }, '⭐'),
+h('div', { style: { fontWeight: 800, fontSize: '17px', marginBottom: '8px', color: '#0f2a3a' } }, 'قريباً: تقييمات حقيقية من عملائنا'),
 h(
-'div',
-{ key: t.name, className: 'card', style: { padding: '22px' } },
-h('div', { style: { fontSize: '34px', color: '#d9a441', lineHeight: 1, marginBottom: '4px', fontWeight: 800 } }, '“'),
-h('p', { style: { fontSize: '14px', marginBottom: '14px', lineHeight: 1.8 } }, t.text),
-h('div', { style: { fontWeight: 700 } }, t.name),
-h('div', { style: { fontSize: '12px', opacity: 0.7 } }, t.city)
+'p',
+{ style: { fontSize: '14px', opacity: 0.75, maxWidth: '480px', margin: '0 auto' } },
+'هذه المساحة محجوزة لعرض تقييمات عملائنا الحقيقية على Google وTripAdvisor، وسيتم تفعيلها بعد بدء استلام أول التقييمات.'
 )
-)
-),
-h(
-'div',
-{ style: { display: 'flex', gap: '14px', marginTop: '22px', flexWrap: 'wrap' } },
-h('div', { className: 'badge-pill', style: { fontSize: '13px' } }, '4.9 / 5 على Google (مساحة مخصصة لتضمين التقييمات الحقيقية)'),
-h('div', { className: 'badge-pill', style: { fontSize: '13px' } }, '4.8 / 5 على TripAdvisor (مساحة مخصصة لتضمين التقييمات الحقيقية)')
 )
 )
 );
