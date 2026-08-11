@@ -55,11 +55,16 @@ h(
 'div',
 {},
 h('div', { style: headingStyle }, 'موقع المكتب'),
-h(
-'div',
-{ className: 'gallery-placeholder', style: { height: '140px', borderRadius: '12px', fontSize: '13px' } },
-'خريطة مكتب تبليسي'
-),
+h('iframe', {
+src: 'https://www.google.com/maps?q=41.7151,44.8271&z=16&output=embed',
+width: '100%',
+height: '140',
+style: { border: 0, borderRadius: '12px', display: 'block' },
+loading: 'lazy',
+allowFullScreen: true,
+referrerPolicy: 'no-referrer-when-downgrade',
+title: 'خريطة مكتب HBS Travel في تبليسي'
+}),
 h('p', { style: { fontSize: '13px', opacity: 0.75, marginTop: '10px' } }, 'يمكن للعملاء زيارة مكتبنا في تبليسي بعد تحديد موعد مسبق.')
 ),
 h(
