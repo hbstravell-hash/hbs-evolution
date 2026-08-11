@@ -101,7 +101,7 @@ title: 'جولة جورجيا الكبرى - 8 أيام',
 cities: ['تبليسي', 'كازبيجي', 'كاخيتي', 'بورجومي', 'باتومي'],
 days: 8,
 nights: 7,
-priceFrom: 690,
+priceFrom: 980,
 bestSeason: 'أبريل إلى أكتوبر، وذروتها في الصيف والعيد',
 itinerary: [
 { day: 1, title: 'الوصول إلى تبليسي', details: 'استقبال ونقل للفندق مع جولة تعريفية مسائية.' },
@@ -115,13 +115,13 @@ itinerary: [
 ],
 hotels: ['chevalier-tbilisi', 'kazbegi-summit-lodge', 'kakheti-vineyard-view', 'borjomi-palace', 'batumi-bay-resort'],
 pricing: [
-{ label: 'شخصين (السعر للفرد)', price: 690 },
-{ label: '٣ أشخاص (السعر للفرد)', price: 650 },
-{ label: '٤ أشخاص (السعر للفرد)', price: 610 },
-{ label: 'عائلة (بالغَين + طفلَين)', price: 2350 }
+{ label: 'شخصين (السعر للفرد)', price: 980 },
+{ label: '٣ أشخاص (السعر للفرد)', price: 925 },
+{ label: '٤ أشخاص (السعر للفرد)', price: 865 },
+{ label: 'عائلة (بالغَين + طفلَين)', price: 3340 }
 ],
-childPrice: 320,
-singleSupplement: 280,
+childPrice: 455,
+singleSupplement: 400,
 includes: ['نقل خاص مكيف طوال الجولة', '7 ليالٍ إقامة بإفطار', 'مرشد سياحي عربي', 'استقبال ووداع من المطار', 'رسوم الدخول المذكورة'],
 excludes: ['تذاكر الطيران الدولية', 'التأشيرة إن وُجدت', 'وجبتا الغداء والعشاء', 'المصاريف الشخصية'],
 routeStops: ['تبليسي', 'كازبيجي', 'كاخيتي', 'بورجومي', 'باتومي'],
@@ -142,7 +142,7 @@ title: 'تبليسي وباتومي - 6 أيام',
 cities: ['تبليسي', 'باتومي'],
 days: 6,
 nights: 5,
-priceFrom: 520,
+priceFrom: 735,
 bestSeason: 'مايو إلى سبتمبر لأجواء شاطئية مثالية في باتومي',
 itinerary: [
 { day: 1, title: 'الوصول إلى تبليسي', details: 'استقبال ونقل للفندق مع وقت حر للراحة.' },
@@ -154,13 +154,13 @@ itinerary: [
 ],
 hotels: ['chevalier-tbilisi', 'batumi-bay-resort'],
 pricing: [
-{ label: 'شخصين (السعر للفرد)', price: 520 },
-{ label: '٣ أشخاص (السعر للفرد)', price: 485 },
-{ label: '٤ أشخاص (السعر للفرد)', price: 455 },
-{ label: 'عائلة (بالغَين + طفلَين)', price: 1780 }
+{ label: 'شخصين (السعر للفرد)', price: 735 },
+{ label: '٣ أشخاص (السعر للفرد)', price: 685 },
+{ label: '٤ أشخاص (السعر للفرد)', price: 645 },
+{ label: 'عائلة (بالغَين + طفلَين)', price: 2515 }
 ],
-childPrice: 250,
-singleSupplement: 200,
+childPrice: 355,
+singleSupplement: 285,
 includes: ['نقل خاص مكيف', '5 ليالٍ إقامة بإفطار', 'مرشد سياحي عربي', 'استقبال ووداع من المطار'],
 excludes: ['تذاكر الطيران الدولية', 'التأشيرة إن وُجدت', 'وجبتا الغداء والعشاء', 'المصاريف الشخصية'],
 routeStops: ['تبليسي', 'متسخيتا', 'باتومي'],
@@ -213,7 +213,7 @@ title: 'عائلتي في جورجيا - 7 أيام',
 cities: ['تبليسي', 'كازبيجي', 'باتومي'],
 days: 7,
 nights: 6,
-priceFrom: 610,
+priceFrom: 860,
 bestSeason: 'الصيف والإجازات المدرسية الخليجية وأيام العيد',
 itinerary: [
 { day: 1, title: 'الوصول إلى تبليسي', details: 'استقبال عائلي ونقل للفندق مع وقت راحة.' },
@@ -226,13 +226,13 @@ itinerary: [
 ],
 hotels: ['chevalier-tbilisi', 'kazbegi-summit-lodge', 'batumi-bay-resort'],
 pricing: [
-{ label: 'شخصين (السعر للفرد)', price: 610 },
-{ label: '٣ أشخاص (السعر للفرد)', price: 575 },
-{ label: '٤ أشخاص (السعر للفرد)', price: 540 },
-{ label: 'عائلة (بالغَين + طفلَين)', price: 2050 }
+{ label: 'شخصين (السعر للفرد)', price: 860 },
+{ label: '٣ أشخاص (السعر للفرد)', price: 810 },
+{ label: '٤ أشخاص (السعر للفرد)', price: 760 },
+{ label: 'عائلة (بالغَين + طفلَين)', price: 2890 }
 ],
-childPrice: 260,
-singleSupplement: 220,
+childPrice: 365,
+singleSupplement: 310,
 includes: ['نقل خاص مكيف بمقاعد أطفال عند الطلب', '6 ليالٍ إقامة بإفطار', 'مرشد سياحي عربي', 'استقبال ووداع من المطار', 'غرف عائلية متصلة'],
 excludes: ['تذاكر الطيران الدولية', 'التأشيرة إن وُجدت', 'وجبتا الغداء والعشاء', 'المصاريف الشخصية'],
 routeStops: ['تبليسي', 'كازبيجي', 'باتومي'],
@@ -252,7 +252,7 @@ title: 'باكورياني الشتوية - 5 أيام',
 cities: ['تبليسي', 'باكورياني'],
 days: 5,
 nights: 4,
-priceFrom: 470,
+priceFrom: 500,
 bestSeason: 'ديسمبر إلى مارس، ذروة موسم التزلج والثلوج',
 itinerary: [
 { day: 1, title: 'الوصول إلى تبليسي', details: 'استقبال ونقل للفندق مع جولة مسائية خفيفة.' },
@@ -263,13 +263,13 @@ itinerary: [
 ],
 hotels: ['chevalier-tbilisi', 'bakuriani-chalets'],
 pricing: [
-{ label: 'شخصين (السعر للفرد)', price: 470 },
-{ label: '٣ أشخاص (السعر للفرد)', price: 440 },
-{ label: '٤ أشخاص (السعر للفرد)', price: 410 },
-{ label: 'عائلة (بالغَين + طفلَين)', price: 1590 }
+{ label: 'شخصين (السعر للفرد)', price: 500 },
+{ label: '٣ أشخاص (السعر للفرد)', price: 470 },
+{ label: '٤ أشخاص (السعر للفرد)', price: 435 },
+{ label: 'عائلة (بالغَين + طفلَين)', price: 1690 }
 ],
-childPrice: 230,
-singleSupplement: 170,
+childPrice: 245,
+singleSupplement: 180,
 includes: ['نقل خاص مكيف', '4 ليالٍ إقامة بإفطار', 'مرشد سياحي عربي', 'استقبال ووداع من المطار'],
 excludes: ['تذاكر الطيران الدولية', 'معدات ودروس التزلج', 'الوجبات غير المذكورة', 'المصاريف الشخصية'],
 routeStops: ['تبليسي', 'باكورياني'],
@@ -285,11 +285,11 @@ gallery: ['https://images.unsplash.com/photo-1550563405-9081212d79f5?auto=format
 ];
 
 export const activities: Activity[] = [
-{ slug: 'kazbegi-day-trip', title: 'كازبيجي في يوم واحد', city: 'كازبيجي', pricePerPerson: 55, duration: '10 ساعات تقريباً', meetingPoint: 'اللوبي الرئيسي بفندقك في تبليسي', includes: ['نقل بسيارة مكيفة', 'مرشد يتحدث العربية', 'توقف عند خزان جينفالي', 'رسوم دخول كنيسة تسمينده'], arabicGuide: true },
-{ slug: 'kakheti-heritage-tour', title: 'جولة كاخيتي التراثية', city: 'كاخيتي', pricePerPerson: 50, duration: '9 ساعات تقريباً', meetingPoint: 'اللوبي الرئيسي بفندقك في تبليسي', includes: ['نقل بسيارة مكيفة', 'مرشد يتحدث العربية', 'جولة في قلعة سيغناغي', 'زيارة مزارع الكروم الريفية'], arabicGuide: true },
+{ slug: 'kazbegi-day-trip', title: 'كازبيجي في يوم واحد', city: 'كازبيجي', pricePerPerson: 65, duration: '10 ساعات تقريباً', meetingPoint: 'اللوبي الرئيسي بفندقك في تبليسي', includes: ['نقل بسيارة مكيفة', 'مرشد يتحدث العربية', 'توقف عند خزان جينفالي', 'رسوم دخول كنيسة تسمينده'], arabicGuide: true },
+{ slug: 'kakheti-heritage-tour', title: 'جولة كاخيتي التراثية', city: 'كاخيتي', pricePerPerson: 60, duration: '9 ساعات تقريباً', meetingPoint: 'اللوبي الرئيسي بفندقك في تبليسي', includes: ['نقل بسيارة مكيفة', 'مرشد يتحدث العربية', 'جولة في قلعة سيغناغي', 'زيارة مزارع الكروم الريفية'], arabicGuide: true },
 { slug: 'tbilisi-old-town-cable-car', title: 'تلفريك ونزهة البلدة القديمة', city: 'تبليسي', pricePerPerson: 25, duration: '4 ساعات تقريباً', meetingPoint: 'ساحة الحرية بتبليسي', includes: ['تذكرة التلفريك', 'مرشد يتحدث العربية', 'جولة مشي في الأزقة القديمة'], arabicGuide: true },
-{ slug: 'gudauri-adventures', title: 'مغامرات غوداوري', city: 'كازبيجي', pricePerPerson: 70, duration: '8 ساعات تقريباً', meetingPoint: 'اللوبي الرئيسي بفندقك في تبليسي', includes: ['نقل بسيارة مكيفة', 'مرشد يتحدث العربية', 'نشاط جبلي واحد حسب الموسم'], arabicGuide: true },
-{ slug: 'martvili-canyon-day', title: 'كانيون مارتفيلي وأوكاتسي', city: 'باتومي', pricePerPerson: 60, duration: '10 ساعات تقريباً', meetingPoint: 'اللوبي الرئيسي بفندقك في باتومي', includes: ['نقل بسيارة مكيفة', 'مرشد يتحدث العربية', 'رسوم دخول الكانيون'], arabicGuide: true },
+{ slug: 'gudauri-adventures', title: 'مغامرات غوداوري', city: 'كازبيجي', pricePerPerson: 80, duration: '8 ساعات تقريباً', meetingPoint: 'اللوبي الرئيسي بفندقك في تبليسي', includes: ['نقل بسيارة مكيفة', 'مرشد يتحدث العربية', 'نشاط جبلي واحد حسب الموسم'], arabicGuide: true },
+{ slug: 'martvili-canyon-day', title: 'كانيون مارتفيلي وأوكاتسي', city: 'باتومي', pricePerPerson: 70, duration: '10 ساعات تقريباً', meetingPoint: 'اللوبي الرئيسي بفندقك في باتومي', includes: ['نقل بسيارة مكيفة', 'مرشد يتحدث العربية', 'رسوم دخول الكانيون'], arabicGuide: true },
 { slug: 'mtskheta-jvari-day', title: 'مدينة متسخيتا التاريخية', city: 'تبليسي', pricePerPerson: 35, duration: '5 ساعات تقريباً', meetingPoint: 'اللوبي الرئيسي بفندقك في تبليسي', includes: ['نقل بسيارة مكيفة', 'مرشد يتحدث العربية', 'زيارة دير جفاري'], arabicGuide: true }
 ];
 
