@@ -1,6 +1,7 @@
 'use client';
 import React, { Suspense, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import { packages } from '../../lib/data';
 
 const h = React.createElement;
@@ -20,7 +21,6 @@ const [kids, setKids] = useState(0);
 const [infants, setInfants] = useState(0);
 const [roomType, setRoomType] = useState('double');
 const [addons, setAddons] = useState<string[]>([]);
-const [depositOption, setDepositOption] = useState('20');
 
 const pkg = packages.find((p) => p.slug === pkgSlug);
 const basePrice = pkg ? pkg.priceFrom : 0;
@@ -31,7 +31,6 @@ return sum + (found ? found.price : 0);
 const roomExtra = roomType === 'single' && pkg ? pkg.singleSupplement : 0;
 const childTotal = pkg ? pkg.childPrice * kids : 0;
 const total = basePrice * adults + childTotal + addonsTotal + roomExtra;
-const depositAmount = Math.round((total * Number(depositOption)) / 100);
 
 const toggleAddon = (key: string) => {
 setAddons((prev) => (prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]));
@@ -45,8 +44,7 @@ const lines = [
 'عدد البالغين: ' + adults + ' - الأطفال: ' + kids + ' - الرضع: ' + infants,
 'نوع الغرفة: ' + roomType,
 'الإضافات: ' + (addons.length ? addons.join('، ') : 'بدون'),
-'الإجمالي التقديري: ' + total + ' $',
-'نسبة العربون المطلوبة: ' + depositOption + '% (' + depositAmount + ' $) والباقي يُدفع عند الوصول'
+'الإجمالي المطلوب سداده بالكامل لتأكيد الحجز: ' + total + ' $'
 ];
 const message = encodeURIComponent(lines.join('\n'));
 window.open('https://wa.me/995555165926?text=' + message, '_blank');
@@ -54,10 +52,9 @@ window.open('https://wa.me/995555165926?text=' + message, '_blank');
 
 const handlePaymentClick = (method: string) => {
 const lines = [
-'مرحباً، أرغب بدفع العربون عبر ' + method + ' لحجز:',
+'مرحباً، أرغب بسداد كامل قيمة الحجز عبر ' + method + ' لحجز:',
 'الباقة: ' + (pkg ? pkg.title : 'غير محددة'),
-'الإجمالي التقديري: ' + total + ' $',
-'العربون المطلوب: ' + depositAmount + ' $'
+'الإجمالي المطلوب سداده بالكامل: ' + total + ' $'
 ];
 const message = encodeURIComponent(lines.join('\n'));
 window.open('https://wa.me/995555165926?text=' + message, '_blank');
@@ -125,24 +122,13 @@ a.label + ' (+' + a.price + ' $)'
 )
 )
 ),
-h('label', { style: { fontWeight: 700, display: 'block', marginBottom: '10px' } }, 'خيار العربون'),
 h(
 'div',
-{ style: { display: 'flex', gap: '16px', marginBottom: '10px' } },
-h(
-'label',
-{ style: { fontSize: '14px' } },
-h('input', { type: 'radio', name: 'deposit', checked: depositOption === '20', onChange: () => setDepositOption('20') }),
-' عربون 20%'
-),
-h(
-'label',
-{ style: { fontSize: '14px' } },
-h('input', { type: 'radio', name: 'deposit', checked: depositOption === '30', onChange: () => setDepositOption('30') }),
-' عربون 30%'
+{ style: { backgroundColor: 'rgba(14,90,99,0.06)', borderRadius: '10px', padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: '6px' } },
+h('p', { style: { fontSize: '13px', fontWeight: 700, margin: 0 } }, 'طريقة الدفع'),
+h('p', { style: { fontSize: '13px', opacity: 0.8, lineHeight: 1.8, margin: 0 } }, 'يُسدَّد كامل قيمة الحجز دفعة واحدة عبر أحد وسائل الدفع الآمنة الموضحة في ملخص الحجز، لتأكيد الحجز مباشرة — لا يوجد نظام دفعة مقدمة (عربون) أو دفعة مؤجلة.'),
+h(Link, { href: '/cancellation-policy', style: { fontSize: '12px', color: '#0e5a63', fontWeight: 700, textDecoration: 'underline' } }, 'سياسة الإلغاء والاسترجاع الكاملة ←')
 )
-),
-h('p', { style: { fontSize: '12px', opacity: 0.7 } }, 'يتم دفع العربون لتأكيد الحجز، والباقي يُدفع نقداً أو بالبطاقة عند الوصول إلى جورجيا.')
 ),
 h(
 'div',
@@ -154,15 +140,15 @@ kids > 0 ? h('p', { style: { fontSize: '13px', opacity: 0.75, marginBottom: '4px
 roomExtra > 0 ? h('p', { style: { fontSize: '13px', opacity: 0.75, marginBottom: '4px' } }, 'إضافة غرفة مفردة: ' + roomExtra + ' $') : null,
 addonsTotal > 0 ? h('p', { style: { fontSize: '13px', opacity: 0.75, marginBottom: '4px' } }, 'إضافات: ' + addonsTotal + ' $') : null,
 h('hr', { style: { margin: '12px 0', border: 'none', borderTop: '1px solid #eee' } }),
-h('p', { style: { fontWeight: 800, fontSize: '20px', color: '#b8862b', marginBottom: '6px' } }, 'الإجمالي: ' + total + ' $'),
-h('p', { style: { fontSize: '13px', opacity: 0.8, marginBottom: '18px' } }, 'العربون المطلوب الآن: ' + depositAmount + ' $'),
+h('p', { style: { fontWeight: 800, fontSize: '20px', color: '#b8862b', marginBottom: '6px' } }, 'الإجمالي المطلوب سداده بالكامل: ' + total + ' $'),
+h('p', { style: { fontSize: '12px', opacity: 0.7, marginBottom: '18px' } }, 'يُسدد دفعة واحدة عند تأكيد الحجز — بدون عربون أو دفعة مؤجلة.'),
 h('button', { onClick: handleConfirm, className: 'btn-primary', style: { width: '100%', border: 'none', fontSize: '15px', marginBottom: '18px' } }, 'تأكيد الحجز عبر واتساب'),
 h('hr', { style: { margin: '4px 0 16px', border: 'none', borderTop: '1px solid #eee' } }),
 h('p', { style: { fontSize: '13px', fontWeight: 700, marginBottom: '10px' } }, 'طرق الدفع الآمنة المتاحة'),
 h(
 'button',
 { onClick: () => handlePaymentClick('PayPal'), style: { ...payBtnBase, backgroundColor: '#ffc439', color: '#003087' } },
-'💳 الدفع عبر PayPal'
+'💳 الدفع الكامل عبر PayPal'
 ),
 h(
 'button',
@@ -174,7 +160,20 @@ h(
 { onClick: () => handlePaymentClick('عملات مشفرة (BTC, ETH, USDT)'), style: { ...payBtnBase, backgroundColor: '#1f2b3a', color: '#fff', marginBottom: 0 } },
 '🪙 الدفع بالعملات المشفرة (BTC, ETH, USDT)'
 ),
-h('p', { style: { fontSize: '11px', opacity: 0.65, marginTop: '10px', textAlign: 'center' } }, 'يتم تفعيل الدفع الإلكتروني عبر شريكنا المرخّص PayPal بنفس نظام الدفع المعتمد في hbstravel.ge — سيتم تزويدك برابط دفع مباشر وآمن عبر واتساب.')
+h('p', { style: { fontSize: '11px', opacity: 0.65, marginTop: '10px', textAlign: 'center' } }, 'يتم تفعيل الدفع الإلكتروني عبر شريكنا المرخّص PayPal بنفس نظام الدفع المعتمد في hbstravel.ge — سيتم تزويدك برابط دفع مباشر وآمن عبر واتساب لسداد كامل القيمة.'),
+h(
+'div',
+{ style: { marginTop: '16px', paddingTop: '14px', borderTop: '1px solid #eee' } },
+h('p', { style: { fontSize: '12px', fontWeight: 700, marginBottom: '6px' } }, 'سياسة الإلغاء والاسترجاع (ملخص):'),
+h(
+'ul',
+{ style: { fontSize: '11px', opacity: 0.75, lineHeight: 1.8, paddingRight: '16px', margin: '0 0 8px 0' } },
+h('li', {}, 'استرداد 80% من المبلغ المدفوع عند الإلغاء قبل 14 يوماً أو أكثر من المغادرة'),
+h('li', {}, 'استرداد 50% عند الإلغاء بين 7 و14 يوماً قبل المغادرة'),
+h('li', {}, 'لا يوجد استرداد عند الإلغاء قبل أقل من 7 أيام من المغادرة')
+),
+h(Link, { href: '/cancellation-policy', style: { fontSize: '11px', color: '#0e5a63', fontWeight: 700 } }, 'عرض السياسة الكاملة ←')
+)
 )
 );
 }
