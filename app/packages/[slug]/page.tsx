@@ -26,7 +26,7 @@ if (!pkg) return notFound();
 const pkgHotels = hotels.filter((hh) => pkg.hotels.includes(hh.slug));
 const whatsappMsg = encodeURIComponent('مرحباً، أرغب بالاستفسار عن باقة: ' + pkg.title);
 const whatsappHref = 'https://wa.me/995555165926?text=' + whatsappMsg;
-const payHref = (method: string) => 'https://wa.me/995555165926?text=' + encodeURIComponent('مرحباً، أرغب بدفع العربون عبر ' + method + ' لباقة: ' + pkg.title);
+const payHref = (method: string) => 'https://wa.me/995555165926?text=' + encodeURIComponent('مرحباً، أرغب بسداد كامل قيمة الحجز عبر ' + method + ' لباقة: ' + pkg.title);
 const payPillStyle = { display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '8px 14px', borderRadius: '9999px', fontSize: '13px', fontWeight: 700, textDecoration: 'none' };
 
 return h(
@@ -49,11 +49,17 @@ h('a', { href: whatsappHref, target: '_blank', rel: 'noopener noreferrer', class
 ),
 h(
 'div',
-{ style: { display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '28px' } },
-h('span', { style: { fontSize: '13px', fontWeight: 700, opacity: 0.7 } }, 'الدفع الآمن:'),
+{ style: { display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '10px' } },
+h('span', { style: { fontSize: '13px', fontWeight: 700, opacity: 0.7 } }, 'الدفع الآمن (كامل القيمة):'),
 h('a', { href: payHref('PayPal'), target: '_blank', rel: 'noopener noreferrer', style: { ...payPillStyle, backgroundColor: '#ffc439', color: '#003087' } }, '💳 PayPal'),
 h('a', { href: payHref('بطاقة ائتمانية/خصم عبر PayPal'), target: '_blank', rel: 'noopener noreferrer', style: { ...payPillStyle, backgroundColor: '#0f2a3a', color: '#fff' } }, '💳 بطاقة ائتمان'),
 h('a', { href: payHref('عملات مشفرة (BTC, ETH, USDT)'), target: '_blank', rel: 'noopener noreferrer', style: { ...payPillStyle, backgroundColor: 'rgba(217,164,65,0.18)', color: '#b8862b' } }, '🪙 كريبتو')
+),
+h(
+'p',
+{ style: { fontSize: '12px', opacity: 0.65, marginBottom: '28px' } },
+'يُسدَّد كامل قيمة الحجز دفعة واحدة عند التأكيد — بدون عربون أو دفعة مؤجلة. ',
+h(Link, { href: '/cancellation-policy', style: { color: '#0e5a63', fontWeight: 700, textDecoration: 'underline' } }, 'راجع سياسة الإلغاء والاسترجاع')
 ),
 h(
 'section',
@@ -167,8 +173,9 @@ h('p', { style: { fontSize: '14px', marginTop: '6px' } }, pkg.bestSeason)
 h(
 'div',
 { className: 'card', style: { padding: '18px' } },
-h('h3', { style: { fontWeight: 800, marginBottom: '8px' } }, 'سياسة الإلغاء'),
-h('ul', { style: { paddingRight: '18px', margin: 0, display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '13px' } }, pkg.cancellationPolicy.map((c) => h('li', { key: c }, c)))
+h('h3', { style: { fontWeight: 800, marginBottom: '8px' } }, 'سياسة الإلغاء والاسترجاع'),
+h('ul', { style: { paddingRight: '18px', margin: 0, display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '13px' } }, pkg.cancellationPolicy.map((c) => h('li', { key: c }, c))),
+h(Link, { href: '/cancellation-policy', style: { fontSize: '12px', color: '#0e5a63', fontWeight: 700, marginTop: '8px', display: 'inline-block' } }, 'عرض السياسة الكاملة ←')
 )
 ),
 h(
