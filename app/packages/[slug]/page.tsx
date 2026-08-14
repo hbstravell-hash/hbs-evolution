@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { packages, hotels } from '../../../lib/data';
 import Accordion from '../../../components/Accordion';
+import FavoriteButton from '../../../components/FavoriteButton';
+import PaymentMethods from '../../../components/PaymentMethods';
 
 const h = React.createElement;
 
@@ -45,21 +47,13 @@ h(
 'div',
 { style: { display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '14px' } },
 h(Link, { href: '/booking?package=' + pkg.slug, className: 'btn-primary' }, 'احجز الآن'),
-h('a', { href: whatsappHref, target: '_blank', rel: 'noopener noreferrer', className: 'btn-whatsapp' }, 'استفسار عبر واتساب')
+h('a', { href: whatsappHref, target: '_blank', rel: 'noopener noreferrer', className: 'btn-whatsapp' }, 'استفسار عبر واتساب'),
+h(FavoriteButton, { slug: pkg.slug, title: pkg.title, image: pkg.image, price: pkg.priceFrom, withLabel: true })
 ),
 h(
 'div',
-{ style: { display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '10px' } },
-h('span', { style: { fontSize: '13px', fontWeight: 700, opacity: 0.7 } }, 'الدفع الآمن (كامل القيمة):'),
-h('a', { href: payHref('PayPal'), target: '_blank', rel: 'noopener noreferrer', style: { ...payPillStyle, backgroundColor: '#ffc439', color: '#003087' } }, '💳 PayPal'),
-h('a', { href: payHref('بطاقة ائتمانية/خصم عبر PayPal'), target: '_blank', rel: 'noopener noreferrer', style: { ...payPillStyle, backgroundColor: '#0f2a3a', color: '#fff' } }, '💳 بطاقة ائتمان'),
-h('a', { href: payHref('عملات مشفرة (BTC, ETH, USDT)'), target: '_blank', rel: 'noopener noreferrer', style: { ...payPillStyle, backgroundColor: 'rgba(217,164,65,0.18)', color: '#b8862b' } }, '🪙 كريبتو')
-),
-h(
-'p',
-{ style: { fontSize: '12px', opacity: 0.65, marginBottom: '28px' } },
-'يُسدَّد كامل قيمة الحجز دفعة واحدة عند التأكيد — بدون عربون أو دفعة مؤجلة. ',
-h(Link, { href: '/cancellation-policy', style: { color: '#0e5a63', fontWeight: 700, textDecoration: 'underline' } }, 'راجع سياسة الإلغاء والاسترجاع')
+{ className: 'card', style: { padding: '18px', marginBottom: '28px' } },
+h(PaymentMethods, { amount: pkg.priceFrom, packageTitle: pkg.title, packageSlug: pkg.slug })
 ),
 h(
 'section',
