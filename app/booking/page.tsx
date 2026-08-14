@@ -3,6 +3,8 @@ import React, { Suspense, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { packages } from '../../lib/data';
+import PaymentMethods from '../../components/PaymentMethods';
+import { addBooking } from '../../lib/account';
 
 const h = React.createElement;
 const addonsList = [
@@ -21,6 +23,7 @@ const [kids, setKids] = useState(0);
 const [infants, setInfants] = useState(0);
 const [roomType, setRoomType] = useState('double');
 const [addons, setAddons] = useState<string[]>([]);
+const [bookingId, setBookingId] = useState('');
 
 const pkg = packages.find((p) => p.slug === pkgSlug);
 const basePrice = pkg ? pkg.priceFrom : 0;
@@ -37,6 +40,22 @@ setAddons((prev) => (prev.includes(key) ? prev.filter((k) => k !== key) : [...pr
 };
 
 const handleConfirm = () => {
+const savedBooking = addBooking({
+packageSlug: pkgSlug,
+packageTitle: pkg ? pkg.title : '',
+checkIn: checkIn,
+adults: adults,
+kids: kids,
+infants: infants,
+roomType: roomType,
+addons: addons.map((key) => {
+const found = addonsList.find((a) => a.key === key);
+return found ? found.label : key;
+}),
+total: total,
+status: 'pending'
+});
+setBookingId(savedBooking.id);
 const lines = [
 'مرحباً، أرغب بتأكيد حجز:',
 'الباقة: ' + (pkg ? pkg.title : 'غير محددة'),
@@ -144,23 +163,7 @@ h('p', { style: { fontWeight: 800, fontSize: '20px', color: '#b8862b', marginBot
 h('p', { style: { fontSize: '12px', opacity: 0.7, marginBottom: '18px' } }, 'يُسدد دفعة واحدة عند تأكيد الحجز — بدون عربون أو دفعة مؤجلة.'),
 h('button', { onClick: handleConfirm, className: 'btn-primary', style: { width: '100%', border: 'none', fontSize: '15px', marginBottom: '18px' } }, 'تأكيد الحجز عبر واتساب'),
 h('hr', { style: { margin: '4px 0 16px', border: 'none', borderTop: '1px solid #eee' } }),
-h('p', { style: { fontSize: '13px', fontWeight: 700, marginBottom: '10px' } }, 'طرق الدفع الآمنة المتاحة'),
-h(
-'button',
-{ onClick: () => handlePaymentClick('PayPal'), style: { ...payBtnBase, backgroundColor: '#ffc439', color: '#003087' } },
-'💳 الدفع الكامل عبر PayPal'
-),
-h(
-'button',
-{ onClick: () => handlePaymentClick('بطاقة ائتمانية/خصم'), style: { ...payBtnBase, backgroundColor: '#1f2b3a', color: '#fff' } },
-'💳 بطاقة ائتمان / خصم (عبر PayPal)'
-),
-h(
-'button',
-{ onClick: () => handlePaymentClick('عملات مشفرة (BTC, ETH, USDT)'), style: { ...payBtnBase, backgroundColor: '#1f2b3a', color: '#fff', marginBottom: 0 } },
-'🪙 الدفع بالعملات المشفرة (BTC, ETH, USDT)'
-),
-h('p', { style: { fontSize: '11px', opacity: 0.65, marginTop: '10px', textAlign: 'center' } }, 'يتم تفعيل الدفع الإلكتروني عبر شريكنا المرخّص PayPal بنفس نظام الدفع المعتمد في hbstravel.ge — سيتم تزويدك برابط دفع مباشر وآمن عبر واتساب لسداد كامل القيمة.'),
+h(PaymentMethods, { amount: total, packageTitle: pkg ? pkg.title : '', packageSlug: pkgSlug, bookingId: bookingId }),
 h(
 'div',
 { style: { marginTop: '16px', paddingTop: '14px', borderTop: '1px solid #eee' } },
