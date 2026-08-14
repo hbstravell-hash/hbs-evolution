@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import AccountNav from './AccountNav';
 
 const h = React.createElement;
 
@@ -33,6 +34,7 @@ h(
 { style: { display: 'flex', flexWrap: 'wrap', gap: '18px', justifyContent: 'center' } },
 links.map((l) => h(Link, { key: l.href, href: l.href, className: 'nav-link', style: { color: '#f6efe3', textDecoration: 'none', fontSize: '14px' } }, l.label))
 ),
+h(AccountNav, {}),
 h(
 'select',
 { 'aria-label': 'اختر العملة', style: { backgroundColor: '#0e5a63', color: '#ffffff', border: 'none', borderRadius: '999px', padding: '7px 14px', fontSize: '13px', cursor: 'pointer' } },
