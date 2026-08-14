@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { packages } from '../../lib/data';
+import FavoriteButton from '../../components/FavoriteButton';
 
 const h = React.createElement;
 
@@ -31,6 +32,12 @@ h('h2', { style: { fontSize: '18px', fontWeight: 700, marginBottom: '6px' } }, p
 h('p', { style: { fontSize: '13px', opacity: 0.75, marginBottom: '6px' } }, p.days + ' أيام / ' + p.nights + ' ليالٍ'),
 h('p', { style: { fontSize: '13px', opacity: 0.75, marginBottom: '10px' } }, 'أفضل موسم: ' + p.bestSeason),
 h('p', { style: { fontWeight: 800, color: '#b8862b', marginBottom: '12px' } }, 'يبدأ من ' + p.priceFrom + ' $ للفرد'),
+h(
+'div',
+{ style: { display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '10px' } },
+h(FavoriteButton, { slug: p.slug, title: p.title, image: p.image, price: p.priceFrom, withLabel: true })
+),
+h('p', { style: { fontSize: '12px', opacity: 0.7, marginBottom: '10px', lineHeight: 1.7 } }, 'وسائل الدفع: PayPal · بطاقة ائتمان/خصم · عملات مشفرة — يُسدَّد كامل المبلغ عند التأكيد.'),
 h(Link, { href: '/packages/' + p.slug, className: 'btn-primary', style: { display: 'block', textAlign: 'center' } }, 'التفاصيل والحجز')
 )
 )
