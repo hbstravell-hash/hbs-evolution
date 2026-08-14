@@ -67,6 +67,12 @@ export type AppNotification = {
   createdAt: string;
 };
 
+export type AccountActionResult = {
+  ok: boolean;
+  error?: string;
+  user?: StoredUser;
+};
+
 export type AccountData = {
   bookings: Booking[];
   transactions: Transaction[];
@@ -147,7 +153,7 @@ export function getCurrentUser(): StoredUser | null {
   return getUsers().find((u) => u.id === id) || null;
 }
 
-export async function registerUser(input: { name: string; email: string; phone: string; password: string }) {
+export async function registerUser(input: { name: string; email: string; phone: string; password: string }): Promise<AccountActionResult> {
   const email = (input.email || '').trim().toLowerCase();
   if (!(input.name || '').trim()) return { ok: false, error: 'الرجاء إدخال الاسم الكامل.' };
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { ok: false, error: 'الرجاء إدخال بريد إلكتروني صحيح.' };
@@ -180,7 +186,7 @@ export async function registerUser(input: { name: string; email: string; phone: 
   return { ok: true, user: user };
 }
 
-export async function loginUser(emailInput: string, password: string) {
+export async function loginUser(emailInput: string, password: string): Promise<AccountActionResult> {
   const email = (emailInput || '').trim().toLowerCase();
   const user = getUsers().find((u) => u.email === email);
   if (!user) return { ok: false, error: 'لا يوجد حساب مرتبط بهذا البريد الإلكتروني.' };
@@ -197,7 +203,7 @@ export function logoutUser(): void {
   notifyChange();
 }
 
-export function updateProfile(patch: { name?: string; phone?: string }) {
+export function updateProfile(patch: { name?: string; phone?: string }): AccountActionResult {
   const current = getCurrentUser();
   if (!current) return { ok: false, error: 'الرجاء تسجيل الدخول أولاً.' };
   const users = getUsers().map((u) =>
