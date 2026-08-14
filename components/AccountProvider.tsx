@@ -37,7 +37,7 @@ export function useAccount(): AccountContextValue {
  * (favourite) package raises an automatic notification as soon as its
  * price changes.
  */
-export default function AccountProvider({ children }: { children: React.ReactNode }) {
+export default function AccountProvider({ children }: { children?: React.ReactNode }) {
   const [user, setUser] = useState<StoredUser | null>(null);
   const [data, setData] = useState<AccountData>(EMPTY_DATA);
   const [ready, setReady] = useState(false);
