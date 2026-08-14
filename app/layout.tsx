@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
+import AccountProvider from '../components/AccountProvider';
 
 const h = React.createElement;
 
@@ -21,10 +22,14 @@ return h(
 h(
 'body',
 {},
+h(
+AccountProvider,
+{},
 h(Navbar, {}),
 h('main', { style: { minHeight: '60vh' } }, children),
 h(Footer, {}),
 h(WhatsAppButton, {})
+)
 )
 );
 }
