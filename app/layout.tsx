@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
 import AccountProvider from '../components/AccountProvider';
+import Script from 'next/script';
 
 const h = React.createElement;
 
@@ -28,7 +29,7 @@ AccountProvider,
 h(Navbar, {}),
 h('main', { style: { minHeight: '60vh' } }, children),
 h(Footer, {}),
-h(WhatsAppButton, {})
+h(WhatsAppButton, {}),h(Script, {}src: 'https://www.googletagmanager.com/gtag/js?id=AW-18260128368', strategy: 'afterInteractive'),h(Script, {id: 'google-ads-gtag', strategy: 'afterInteractive'}, "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-18260128368');")
 )
 )
 );
