@@ -29,8 +29,8 @@ AccountProvider,
 h(Navbar, {}),
 h('main', { style: { minHeight: '60vh' } }, children),
 h(Footer, {}),
-h(WhatsAppButton, {}),h(Script, {}src: 'https://www.googletagmanager.com/gtag/js?id=AW-18260128368', strategy: 'afterInteractive'),h(Script, {id: 'google-ads-gtag', strategy: 'afterInteractive'}, "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-18260128368');")
+h(WhatsAppButton, {}),h(Script, {src: 'https://www.googletagmanager.com/gtag/js?id=AW-18260128368', strategy: 'afterInteractive'}),h(Script, {id: 'google-ads-gtag', strategy: 'afterInteractive'}, "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-18260128368');")
 )
-)
+  )
 );
 }
